@@ -1,105 +1,192 @@
-/* general styling */
-:root {
-  --smaller: .75;
+ 
+/* Topnav */
+/* Add a black background color to the top navigation */
+ .topnav {
+	 background-color: #ffc425;
+	 display: flex;
+	 justify-content:space-evenly;
+	 flex-wrap: wrap;
+	 text-align: center;
+	 border-radius: 5px;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Style the links inside the navigation bar */
+ .topnav a {
+	 display: block;
+	 color: #492f24;
+	 text-align: center;
+	 padding: 6px 0px 4px;
+	 text-decoration: none;
+	 font-size: 17px;
 }
-
-html, body {
-  height: 100%;
-  margin: 0;
+/* Add an active class to highlight the current page */
+ .active {
+	 text-decoration: underline;
 }
-
-body {
-  align-items: center;
-  background-color: #000000;
-  display: flex;
-  font-family: -apple-system, 
-    BlinkMacSystemFont, 
-    "Segoe UI", 
-    Roboto, 
-    Oxygen-Sans, 
-    Ubuntu, 
-    Cantarell, 
-    "Helvetica Neue", 
-    sans-serif;
+/* Hide the link that should open and close the topnav on small screens */
+ .topnav .icon {
+	 display: none;
 }
-
-.container {
-  color: #ffc425;
-  margin: 0 auto;
-  text-align: center;
-  overflow: hidden;
+/* Add a dark background on topnav links and the dropdown button on hover */
+ .topnav a:hover {
+	 text-decoration: underline;
+	 color: #492f24;
 }
-
-h1 {
-  font-weight: normal;
-  letter-spacing: .125rem;
-  text-transform: uppercase;
+/* Dropdown */
+/* The container <div> - needed to position the dropdown content */
+ .dropdown {
+	 position: relative;
+	 border-radius: 5px;
+	 float: left;
+	 color: #492f24;
 }
-
-li {
-  display: inline-block;
-  font-size: 1.5em;
-  list-style-type: none;
-  padding: 1em;
-  text-transform: uppercase;
+/* Dropdown Button for Topnav */
+ .dropdownbtn {
+	 border: none;
+	 border-radius: 5px;
+	 float: left;
+	 font-size: 17px;
+	 outline: none;
+	 color: #492f24;
+	 background-color: #ffc425;
+	 margin: 0;
 }
-
-li span {
-  display: block;
-  font-size: 4.5rem;
+/* Dropdown content (Hidden by Default) */
+ .dropdown-content {
+	 display: none;
+	 position: absolute;
+	 margin-top: 36px;
+	 background-color: whitesmoke;
+	 min-width: 160px;
+	 color: #492f24;
+	 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	 z-index: 50;
+	 border-radius: 5px;
 }
-
-
-
-.flex-list {
-    position: relative;
-    margin: 1em;
-    overflow: hidden;
+/* Links inside the dropdown */
+ .dropdown-content a {
+	 font-size: 14px;
+	 padding: 6px 8px 6px 8px;
+	 text-decoration: none;
+	 display: block;
+	 color: #492f24;
+	 text-align: left;
+	 border-radius: 5px;
 }
-.flex-list ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: -1px;
+/* Change color of dropdown links on hover */
+ .dropdown-content a:hover {
+	 border-radius: 5px;
+	 color: #492f24;
+	 text-decoration: underline;
 }
-.flex-list li {
-    flex-grow: 1;
-    flex-basis: auto;
-    margin: .25em 0;
-    padding: 0 1em;
-    text-align: center;
-    border-left: 2px solid #ffc425;
+/* Show the dropdown menu on hover */
+ .dropdown:hover .dropdown-content {
+	 display: block;
 }
-
-.flex-list li:first-child { border-left: none; }
-
-.emoji {
-  display: none;
-  padding: 1rem;
+/* Change the background color of the dropdown button when the dropup content is shown */
+ .dropdown:hover .dropdownbtn {
+	 text-decoration: underline;
 }
-
-.emoji span {
-  font-size: 4rem;
-  padding: 0 .5rem;
+/* Hamburger Menu */
+/* When the screen is less than 1000 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+ @media screen and (max-width: 1000px) {
+	 .topnav a:not(:first-child), .dropdown .dropdownbtn {
+		 display: none;
+	}
+	 .topnav a.icon {
+		 padding: 4px 6px 0px 0px;
+		 float: right;
+		 align: right;
+		 display: block;
+	}
 }
-
-@media all and (max-width: 768px) {
-  h1 {
-    font-size: calc(1.5rem * var(--smaller));
-  }
-  
-  li {
-    font-size: calc(1.125rem * var(--smaller));
-  }
-  
-  li span {
-    font-size: calc(3.375rem * var(--smaller));
-  }
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+ @media screen and (max-width: 1000px) {
+	 .topnav.responsive {
+		 position: relative;
+		 display: block;
+		 border-radius: 5px;
+	}
+	 .topnav.responsive a.icon {
+		 position: absolute;
+		 right: 0;
+		 top: 0;
+		 padding: 4px 6px 0px 0px;
+	}
+	 .topnav.responsive a {
+		 float: none;
+		 display: block;
+		 text-align: left;
+	}
+	 .topnav.responsive .dropdown {
+		float: none;
+	}
+	 .topnav.responsive .dropdown-content {
+		position: relative;
+	}
+	 .topnav.responsive .dropdown .dropdownbtn {
+		 display: block;
+		 width: 100%;
+		 text-align: left;
+		 float: left;
+		 border-radius: 0px;
+	}
 }
+/* Quicklinks Dropup */
+/* Dropup Button for Quicklinks */
+ .dropupbtn {
+	 background-color: #EBEBEB;
+	 color: #492f24;
+	 padding: 8px;
+	 font-size: 12px;
+	 font-style: italic;
+	 border: none;
+	 border-radius: 5px;
+	 float: right;
+}
+/* The container <div> - needed to position the dropup content */
+ .dropup {
+	 position: relative;
+	 display: inline-block;
+	 float: right;
+	 color: #492f24;
+}
+/* Dropup content (Hidden by Default) */
+ .dropup-content {
+	 display: none;
+	 position: absolute;
+	 bottom: 33px;
+	 background-color: whitesmoke;
+	 border-radius: 5px;
+	 min-width: 160px;
+	 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	 z-index: auto;
+	 color: #492f24;
+}
+/* Links inside the dropup */
+ .dropup-content a {
+	 padding: 6px 8px 6px 8px;
+	 text-decoration: none;
+	 display: block;
+	 border-radius: 5px;
+	 color: #492f24;
+}
+/* Change color of dropup links on hover */
+ .dropup-content a:hover {
+	 border-radius: 5px;
+	 color: #492f24;
+}
+/* Show the dropup menu on hover */
+ .dropup:hover .dropup-content {
+	 display: block;
+}
+/* Change the background color of the dropup button when the dropup content is shown */
+ .dropup:hover .dropupbtn {
+	 background-color: #492f24;
+	 color: white;
+}
+/* Colors */
+/* brown: #492f24;
+ gold: #ffc425;
+ white: #f2f2f2;
+ transparent: #ffffff00;
+ */
